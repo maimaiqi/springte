@@ -31,14 +31,8 @@
     <select id="selectPage">
         select * from sys_user
         <where>
-            <if test="username != null">
-                username = #{username}
-            </if>
-            <if test="email != null">
-                and email = #{email}
-            </if>
-            <if test="address != null">
-                and address = #{address}
+            <if test="username!=null">
+                username like #{username}
             </if>
         </where>
     </select>
