@@ -2,6 +2,7 @@ package com.maimai.springboot.mapper;
 
 import com.maimai.springboot.entity.User;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,4 +20,9 @@ public interface UserMapper {
 
     @Delete("delete from sys_user where id = #{id}")
     Integer deleteById(@Param("id") Integer id);
+
+    List<User> selectPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize, @Param("username") String username, @Param("email") String email, @Param("address") String address);
+
+    @Select("select count(*) from sys_user where username like #{username} and email like #{email} and address like #{address}")
+    Integer selectTotal(String username,String email,String address);
 }
