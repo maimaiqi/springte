@@ -41,16 +41,15 @@ public class UserController {
     @GetMapping("/page")
     public Map<String,Object> findPage(@RequestParam Integer pageNum,
                                        @RequestParam Integer pageSize,
-                                       @RequestParam(required = false) String username
-                                       //@RequestParam(required = false) String email,
-                                       //@RequestParam(required = false) String address
-                                       ){
+                                       @RequestParam(required = false) String username,
+                                       @RequestParam(required = false) String email,
+                                       @RequestParam(required = false) String address){
         pageNum = (pageNum - 1) * pageSize;
         username = "%"+username+"%";
-        //email = "%"+email+"%";
-        //address = "%"+address+"%";
-        List<User> data = userMapper.selectPage(pageNum,pageSize,username);
-        Integer total = userMapper.selectTotal(username);
+        email = "%"+email+"%";
+        address = "%"+address+"%";
+        List<User> data = userMapper.selectPage(pageNum,pageSize,username,email,address);
+        Integer total = userMapper.selectTotal(username,email,address);
 
         Map<String,Object> res = new HashMap<>();
         res.put("data",data);

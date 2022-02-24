@@ -21,9 +21,7 @@ public interface UserMapper {
     @Delete("delete from sys_user where id = #{id}")
     Integer deleteById(@Param("id") Integer id);
 
+    List<User> selectPage(Integer pageNum,Integer pageSize,String username,String email,String address);
 
-    List<User> selectPage(Integer pageNum,Integer pageSize,String username);
-
-    @Select("select count(*) from sys_user where username like #{username}")
-    Integer selectTotal(String username);
+    Integer selectTotal(String username,String email,String address);
 }

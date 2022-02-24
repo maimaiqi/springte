@@ -28,12 +28,32 @@
             id = #{id}
         </where>
     </update>
-    <select id="selectPage">
+    <select id="selectPage" resultType="com.maimai.springboot.entity.User">
         select * from sys_user
         <where>
-            <if test="username!=null">
+            <if test="username != '%null%'">
                 username like #{username}
             </if>
+            <if test="email != '%null%'">
+                email like #{email}
+            </if>
+            <if test="address != '%null%'">
+                address like #{address}
+            </if>
         </where>
+    </select>
+    <select id="selectTotal" resultType="integer">
+       select count(*) from sys_user
+       <where>
+           <if test="username != '%null%'">
+               username like #{username}
+           </if>
+           <if test="email != '%null%'">
+               email like #{email}
+           </if>
+           <if test="address != '%null%'">
+               address like #{address}
+           </if>
+       </where>
     </select>
 </mapper>
