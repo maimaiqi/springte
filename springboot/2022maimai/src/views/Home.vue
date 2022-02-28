@@ -110,7 +110,7 @@
 
           <el-table :data="tableData" border stripe :header-cell-class-name="headerBg">
             <el-table-column prop="id" label="ID" width="80"></el-table-column>
-            <nel-table-colum prop="username" label="用户名" width="140"></nel-table-colum>
+            <el-table-column prop="username" label="用户名" width="140"></el-table-column>
             <el-table-column prop="nickname" label="昵称" width="120"></el-table-column>
             <el-table-column prop="email" label="邮箱"></el-table-column>
             <el-table-column prop="phone" label="电话"></el-table-column>
@@ -156,8 +156,8 @@ export default {
       logoTextShow:true,
       headerBg:'headerBg',
       username:"",
-      email:"null",
-      address:"null"
+      email:"",
+      address:""
     }
   },
   created(){
