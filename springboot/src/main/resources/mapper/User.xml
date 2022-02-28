@@ -35,10 +35,10 @@
                 username like #{username}
             </if>
             <if test="email != '%null%'">
-                email like #{email}
+                and email like #{email}
             </if>
             <if test="address != '%null%'">
-                address like #{address}
+                and address like #{address}
             </if>
         </where>
     </select>
@@ -49,10 +49,10 @@
                username like #{username}
            </if>
            <if test="email != '%null%'">
-               email like #{email}
+               and email like #{email}
            </if>
            <if test="address != '%null%'">
-               address like #{address}
+               and address like #{address}
            </if>
        </where>
     </select>
