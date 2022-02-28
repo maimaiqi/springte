@@ -78,7 +78,7 @@
           <el-breadcrumb-item><a href="/">用户管理</a></el-breadcrumb-item>
         </el-breadcrumb>
         <el-header style="font-size: 12px;border-bottom:1px solid #ccc;line-height:60px;display:flex">
-          <div style="flex:1;font=size:18px">
+          <div style="flex:1;font-size:18px">
             <span :class="collapseBtnClass" style="cursor:pointer" @click="collapse"></span>
           </div>  
           
@@ -115,12 +115,12 @@
             <el-table-column prop="email" label="邮箱"></el-table-column>
             <el-table-column prop="phone" label="电话"></el-table-column>
             <el-table-column prop="address" label="地址"></el-table-column>
-            <el-table-column label="操作">
-              <template scope="scope">
+            <el-table-column label="操作"  width="200" align="center">
+              <template slot-scope="scope">
                 <el-button type="success">编辑 <i class="el-icon-edit"></i></el-button>
-                <el-button type="danger">删除 <i class="el-icon-delete"></i></el-button>
-              </template>  
-            </el-table-column>  
+                <el-button type="danger">删除 <i class="el-icon-remove-outline"></i></el-button>
+              </template>
+            </el-table-column>
           </el-table>
           <div style="padding:10px 0">
             <el-pagination
@@ -146,7 +146,7 @@
 export default {
   data(){
     return {
-      tableData: [],
+      tableData: [ ],
       total:0,
       pageNum:1,
       pageSize:3,
@@ -184,7 +184,12 @@ export default {
           //+"&email="+this.email+"&address="+this.address
           .then(res => res.json()).then(res =>{
         console.log(res)
+        console.log('1234567')
+        console.log(res.data.data())
         this.tableData = res.data
+
+        console.log("maimai")
+        console.log(this.tableData)
         this.total = res.total
       })
     },
