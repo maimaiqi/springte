@@ -3,7 +3,6 @@ package com.maimai.springboot.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.maimai.springboot.entity.User;
 import com.maimai.springboot.mapper.UserMapper;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
