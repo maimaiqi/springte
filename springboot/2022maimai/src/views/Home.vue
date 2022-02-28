@@ -146,7 +146,7 @@
 export default {
   data(){
     return {
-      tableData: [ ],
+      tableData: [],
       total:0,
       pageNum:1,
       pageSize:3,
@@ -178,18 +178,12 @@ export default {
       }
 
     },
-    load(){
-      fetch("http://localhost:9090/user/page?pageNum="+this.pageNum+"&pageSize="+this.pageSize
-          +"&username="+this.username+"&email="+this.email+"&address="+this.address)
-          //+"&email="+this.email+"&address="+this.address
-          .then(res => res.json()).then(res =>{
+    load() {
+      fetch("http://localhost:9090/user/page?pageNum="+this.pageNum+"&pageSize=" + this.pageSize +
+          "&username=" + this.username +"&email="+this.email+"&address="+this.address)
+          .then(res => res.json()).then(res => {
         console.log(res)
-        console.log('1234567')
-        console.log(res.data.data())
-        this.tableData = res.data
-
-        console.log("maimai")
-        console.log(this.tableData)
+        this.tableData = res.records
         this.total = res.total
       })
     },
