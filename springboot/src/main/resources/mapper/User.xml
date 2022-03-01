@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.maimai.springboot.mapper.UserMapper">
+<<<<<<< HEAD
 <!--    <update id="update">-->
 <!--        update sys_user-->
 <!--        <set>-->
@@ -36,4 +37,60 @@
 <!--            </if>-->
 <!--        </where>-->
 <!--    </select>-->
+=======
+    <update id="update">
+        update sys_user
+        <set>
+            <if test="username != null">
+                username = #{username}
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="nickname != null">
+                nickname=#{nickname},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="address != null">
+                address=#{address}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    <select id="selectPage" resultType="com.maimai.springboot.entity.User">
+        select * from sys_user
+        <where>
+            <if test="username != '%null%'">
+                username like #{username}
+            </if>
+            <if test="email != '%null%'">
+                and email like #{email}
+            </if>
+            <if test="address != '%null%'">
+                and address like #{address}
+            </if>
+        </where>
+    </select>
+    <select id="selectTotal" resultType="integer">
+       select count(*) from sys_user
+       <where>
+           <if test="username != '%null%'">
+               username like #{username}
+           </if>
+           <if test="email != '%null%'">
+               and email like #{email}
+           </if>
+           <if test="address != '%null%'">
+               and address like #{address}
+           </if>
+       </where>
+    </select>
+>>>>>>> 599480f0895f34a2fab695710b7072da4e557fe2
 </mapper>
