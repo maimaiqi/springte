@@ -9,7 +9,7 @@ import request from "@/utils/request";
 Vue.config.productionTip = false
 Vue.use(ElementUI,{size:"mini"});
 
-Vue.prototype.request = request
+Vue.prototype.request = request //全局变量
 
 
 new Vue({
