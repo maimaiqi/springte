@@ -6,12 +6,10 @@
       </el-aside>
       
       <el-container>
-        <el-breadcrumb separator="/" style="margin:20px 0 0 20px">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item><a href="/">用户管理</a></el-breadcrumb-item>
-        </el-breadcrumb>
+
         <el-header style="border-bottom:1px solid #ccc;">
-          <Header :collapseBtnClass="collapseBtnClass" @statusChange="aaa" />
+          <Header :collapseBtnClass="collapseBtnClass" @statusChange="changeCollage"/>
+<!--          <Header :collapseBtnClass="collapseBtnClass" :collapse="isCollapse" />-->
         </el-header>
         <el-main>
           <!--表示当前页面的子路由会在router-view里面展示-->
@@ -43,9 +41,11 @@ export default {
     Aside
   },
   methods:{
-      aaa(collapse, currClass) {
+      changeCollage(collapse, currClass,sidewidth,logoTextShow) {
         this.isCollapse = collapse
         this.collapseBtnClass = currClass
+        this.sideWidth = sidewidth
+        this.logoTextShow = logoTextShow
       }
 
     }

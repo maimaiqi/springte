@@ -13,7 +13,7 @@
     <el-menu-item index="/">
       <template slot="title">
         <i class="el-icon-house"></i>
-        <span slot="title">主页</span>
+        <span slot="title">首页</span>
       </template>
     </el-menu-item>
     <el-submenu index="2">
@@ -34,7 +34,7 @@ export default {
   name: "Aside",
   props: {
     isCollapse: Boolean,
-    logoTextShow:Boolean
+    logoTextShow: Boolean
   },
   data() {
     return {
