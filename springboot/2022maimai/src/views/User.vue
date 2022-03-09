@@ -21,8 +21,14 @@
       >
         <el-button type="danger" slot="reference">批量删除<i class="el-icon-remove-outline"></i></el-button>
       </el-popconfirm>
-      <el-button type="primary" class="ml-5">导入<i class="el-icon-upload2"></i></el-button>
-      <el-button type="primary">导出<i class="el-icon-download"></i></el-button>
+      <el-upload action="http://localhost:9090/user/import"
+                 :show-file-list="false"
+                 :on-success="handleExcelImportSuccess"
+                 :before-upload="beforeAvatarUpload"
+                 style="display: inline-block">
+        <el-button type="primary" class="ml-5">导入<i class="el-icon-upload2"></i></el-button>
+      </el-upload>
+      <el-button type="primary" @click="exp" class="ml-5">导出<i class="el-icon-download"></i></el-button>
     </div>
 
     <el-table :data="tableData" border stripe :header-cell-class-name="headerBg" @selection-change="handleSelectionChange">
@@ -193,6 +199,23 @@ export default {
       this.pageNum = pageNum
       console.log(pageNum)
       this.load()
+    },
+    exp(){
+      window.open("http://localhost:9090/user/export")
+    },
+    handleExcelImportSuccess(){
+      this.$message.success("导入成功")
+      this.load()
+    },
+    beforeAvatarUpload(file){
+      const isXlsx = file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+      if(!isXlsx){
+        this.$message.error('上传文件只能是xlsx格式')
+        console.log(file.type)
+      }
+
+      return isXlsx
     }
   }
 }
